@@ -10,9 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/news",newsRouter);
 
-// USER_NAME=EkhlasUddinAhmed
-// USER_PASSWORD=IFewOIFetMmJ5HCu
-// DB_NAME=DragonNews
+
 
 
 const url=`mongodb+srv://${process.env.USER_NAME}:${process.env.USER_PASSWORD}@cluster0.13y3n.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
