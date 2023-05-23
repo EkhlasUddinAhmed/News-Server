@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express=require('express');
 const app=express();
 const cors=require('cors');
@@ -8,9 +9,10 @@ const PORT=process.env.Port || 5000;
 app.use(cors());
 app.use(express.json());
 app.use("/news",newsRouter);
-require("dotenv").config();
 
-
+// USER_NAME=EkhlasUddinAhmed
+// USER_PASSWORD=IFewOIFetMmJ5HCu
+// DB_NAME=DragonNews
 
 
 const url=`mongodb+srv://${process.env.USER_NAME}:${process.env.USER_PASSWORD}@cluster0.13y3n.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
