@@ -8,24 +8,20 @@ const PORT=process.env.Port || 5000;
 app.use(cors());
 app.use(express.json());
 app.use("/news",newsRouter);
+require("dotenv").config();
 
 
 
-// password: IFewOIFetMmJ5HCu
-// UserName: EkhlasUddinAhmed
-// database:DragonNews
 
-// Database Connection Start here...
-// const uri = "mongodb+srv://Ekhlas:sLd69aj8CB6g9BdB@cluster0.13y3n.mongodb.net/EkhlasDB?retryWrites=true&w=majority";
+const url=`mongodb+srv://${process.env.USER_NAME}:${process.env.USER_PASSWORD}@cluster0.13y3n.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
-const uri="mongodb+srv://EkhlasUddinAhmed:IFewOIFetMmJ5HCu@cluster0.13y3n.mongodb.net/DragonNews?retryWrites=true&w=majority";
-
+console.log("Connection URL is:",url);
 const config={ 
     useNewUrlParser: true, 
     useUnifiedTopology: true
              };
 
-mongoose.connect(uri,config)
+mongoose.connect(url,config)
 .then(()=>{
     console.log("DataBase Connection Successfull");
     app.listen(PORT,()=>{
